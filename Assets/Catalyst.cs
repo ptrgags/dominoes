@@ -2,11 +2,10 @@
 using System.Collections;
 
 public class Catalyst : MonoBehaviour {
-	public float thrust = 0;
-	public Rigidbody body;
+	public Vector3 thrust = new Vector3(0, 0, 0);
 
 	void Start() {
-		body = GetComponent<Rigidbody>();
-		body.AddForce(0, 0, thrust);
+		Rigidbody body = (Rigidbody)GetComponent<Rigidbody>();
+		body.AddForce(thrust);
 	}
 }
