@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
+  domino_material: {fileID: 2100000, guid: fce3388ff86b3214392bc51401d20bb9, type: 2}
   num_dominoes: 100
   spacing: 0.3
 --- !u!4 &969982518
@@ -481,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
+  domino_material: {fileID: 2100000, guid: 77c2c7fc8a305a340b4cd253f7a4860c, type: 2}
   num_dominoes: 16
   spacing: 0.2
 --- !u!4 &1077908191
@@ -523,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
+  domino_material: {fileID: 2100000, guid: aa1e52b83f895394790fb1b7f653394b, type: 2}
   num_dominoes: 100
   spacing: 0.3
 --- !u!4 &1733093038
@@ -532,7 +535,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1733093036}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 2.9, y: 0.25, z: -1.75}
+  m_LocalPosition: {x: 2.9, y: 0.25, z: -1.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

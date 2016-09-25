@@ -7,6 +7,8 @@ using System.Collections;
 public class DominoChain : MonoBehaviour {
 	/** The prefab that represents a Domino */
 	public GameObject domino_prefab;
+	/** The material for coloring the dominoes in this chain */
+	public Material domino_material;
 	/** Number of dominoes in the chain */
 	public int num_dominoes = 10;
 	/** Spacing between each dominoes */
@@ -24,8 +26,14 @@ public class DominoChain : MonoBehaviour {
 		for (int i = 0; i < num_dominoes; i++) {
 			//Create a new child GameObject from the Domino prefab.
 			Vector3 pos = new Vector3(i * spacing, 0, 0);
-			GameObject obj = (GameObject)Instantiate(domino_prefab, first_domino_center + rotation * pos, rotation);
-			obj.transform.parent = gameObject.transform;
+			GameObject domino = (GameObject)Instantiate(domino_prefab, first_domino_center + rotation * pos, rotation);
+
+			//Mark the domino as a child of the domino chain
+			domino.transform.parent = gameObject.transform;
+
+			//set the child domino's material to match the one specified 
+			//for the chain.
+			domino.GetComponent<Renderer>().material = domino_material;
 		}
 	}
 
@@ -48,7 +56,7 @@ public class DominoChain : MonoBehaviour {
 
 		//Draw the first, second and last dominoes to show the length of the domino
 		//chain and the spacing.
-		Gizmos.color = Color.red;
+		Gizmos.color = domino_material.color;
 		DrawBox(first_domino_center, rotation, domino_dims);
 		DrawBox(second_domino_center, rotation, domino_dims);
 		DrawBox(last_domino_center, rotation, domino_dims);
