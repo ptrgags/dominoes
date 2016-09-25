@@ -45,7 +45,7 @@ public class DominoChain : MonoBehaviour {
 		Quaternion rotation = gameObject.transform.rotation;
 
 		//Get the domino dimensions from the prefab
-		Vector3 domino_dims = domino_prefab.transform.localScale;
+        Vector3 domino_dims = domino_prefab.GetComponent<Domino>().Dimensions;
 
 		//Vector that represents the distance between each pair of dominoes
 		Vector3 delta = rotation * (new Vector3(spacing, 0, 0));
