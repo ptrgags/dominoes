@@ -527,6 +527,7 @@ MonoBehaviour:
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
   domino_material: {fileID: 2100000, guid: 77c2c7fc8a305a340b4cd253f7a4860c, type: 2}
   num_dominoes: 10
+  layers: 3
 --- !u!4 &1687610382
 Transform:
   m_ObjectHideFlags: 0

@@ -4,80 +4,55 @@ using System.Collections;
 /**
  * Chain of dominoes in a straight line
  */
-public class DominoChain : MonoBehaviour {
-	/** The prefab that represents a Domino */
-	public GameObject domino_prefab;
-	/** The material for coloring the dominoes in this chain */
-	public Material domino_material;
+public class DominoChain : DominoStructure {
 	/** Number of dominoes in the chain */
 	public int num_dominoes = 10;
 	/** Spacing between each dominoes */
 	public float spacing = 0.2f;
 
-	// Use this for initialization
-	void Start () {
-		//The first domino's center is the same as the parent
-		Vector3 first_domino_center = gameObject.transform.position;
+    /**
+     * Turn the spacing parameter into 
+     * a vector that points along the x-axis.
+     */
+    private Vector3 spacing_delta {
+        get {
+            return new Vector3(spacing, 0, 0);
+        }
+    }
 
-		//Each domino is rotated the same as the parent
-		Quaternion rotation = gameObject.transform.rotation;
+    /**
+     * Get the position of an arbitrary domino
+     * in the chain.
+     */
+    private Vector3 get_domino_center(int index) {
+        return index * spacing_delta;
+    }
 
-		//Create dominoes in a straight line
-		for (int i = 0; i < num_dominoes; i++) {
-			//Create a new child GameObject from the Domino prefab.
-			Vector3 pos = new Vector3(i * spacing, 0, 0);
-			GameObject domino = (GameObject)Instantiate(domino_prefab, first_domino_center + rotation * pos, rotation);
 
-			//Mark the domino as a child of the domino chain
-			domino.transform.parent = gameObject.transform;
+    /**
+     * Create all the dominoes in the chain
+     */
+    void Start () {
+        //Create dominoes in a straight line
+        for (int i = 0; i < num_dominoes; i++) {
+            Vector3 pos = i * spacing_delta;
+            add_domino(pos);
+        }
+    }
 
-			//set the child domino's material to match the one specified 
-			//for the chain.
-			domino.GetComponent<Renderer>().material = domino_material;
-		}
-	}
-
+    /**
+     * Draw the first, second and last dominoes
+     * to show the length and spacing of the chain. 
+     */
 	void OnDrawGizmos() {
-		//The first domino's center is the same as the parent
-		Vector3 first_domino_center = gameObject.transform.position;
-
-		//All dominoes are rotated the same as the parent
-		Quaternion rotation = gameObject.transform.rotation;
-
-		//Get the domino dimensions from the prefab
-        Vector3 domino_dims = domino_prefab.GetComponent<Domino>().Dimensions;
-
-		//Vector that represents the distance between each pair of dominoes
-		Vector3 delta = rotation * (new Vector3(spacing, 0, 0));
-
-		//Get the position of the second and last dominoes
-		Vector3 second_domino_center = first_domino_center + delta;
-		Vector3 last_domino_center = first_domino_center + (num_dominoes - 1) * delta;
-
-		//Draw the first, second and last dominoes to show the length of the domino
-		//chain and the spacing.
-		Gizmos.color = domino_material.color;
-		DrawBox(first_domino_center, rotation, domino_dims);
-		DrawBox(second_domino_center, rotation, domino_dims);
-		DrawBox(last_domino_center, rotation, domino_dims);
-		Gizmos.DrawLine(first_domino_center, last_domino_center);
-	}
-
-	/**
-	 * Draw a wireframe box Gizmo with rotation
-	 */
-	void DrawBox(Vector3 position, Quaternion rotation, Vector3 scale) {
-		//Save the old matrix
-		Matrix4x4 old_matrix = Gizmos.matrix;
-
-		//Add a transformation to the graphics context
-		Matrix4x4 new_matrix = Matrix4x4.TRS(position, rotation, scale);
-		Gizmos.matrix *= new_matrix;
-
-		//Draw the wireframe box
-		Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
-
-		//Restore the old matrix
-		Gizmos.matrix = old_matrix;
+        Gizmos.color = domino_material.color;
+        Quaternion rotation = Quaternion.identity;
+        Vector3 dims = domino_template.Dimensions;
+        draw_domino_outline(get_domino_center(0), rotation, dims);
+        draw_domino_outline(get_domino_center(1), rotation, dims);
+        draw_domino_outline(get_domino_center(num_dominoes - 1), rotation, dims);
+        Gizmos.DrawLine(
+            transform.position + transform.rotation * get_domino_center(0), 
+            transform.position + transform.rotation * get_domino_center(num_dominoes - 1));
 	}
 }
