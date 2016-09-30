@@ -7,6 +7,7 @@ public class DominoWall : DominoStructure {
 
     private Quaternion ground_rotation = Quaternion.Euler(90, 0, 0);
     private Quaternion wall_rotation = Quaternion.Euler(90, 90, 0);
+    private Quaternion end_wall_rotation = Quaternion.Euler(0, 90, 0);
 
     private Vector3 ground_spacing_delta {
         get {
@@ -45,7 +46,7 @@ public class DominoWall : DominoStructure {
     private Vector3 wall_spacing_delta {
         get {
             return new Vector3(
-                2 * (domino_template.Height - domino_template.Thickness), 
+                domino_template.Height - domino_template.Thickness, 
                 0, 
                 0);
         }
@@ -66,22 +67,61 @@ public class DominoWall : DominoStructure {
         for (int i = 0; i < num_dominoes; i++) {
             Vector3 pos = i * ground_spacing_delta;
             add_domino(pos, ground_rotation);
-            add_domino(pos + half_layer_delta, ground_rotation);
+            //add_domino(pos + half_layer_delta, ground_rotation);
+        }
+
+        //First layer of walls
+        for (int i = 0; i < num_dominoes - 1; i++) {
+            Vector3 pos = i * wall_spacing_delta + first_wall_offset;
+            pos += i % 2 == 0 ? center_to_side_delta : -center_to_side_delta;
+            add_domino(pos, wall_rotation);
+        }
+
+        //Upright domino at each end
+        Vector3 end_to_side = new Vector3(0, 0, domino_template.HalfHeight - domino_template.HalfWidth);
+        Vector3 end_height = new Vector3(
+            0, domino_template.HalfWidth + domino_template.HalfHeight, 0);
+        Vector3 last_domino_pos = (num_dominoes - 1) * ground_spacing_delta;
+        Vector3 side_vector = (num_dominoes % 2 == 0) ? -end_to_side : end_to_side;
+        add_domino(end_height - end_to_side);
+        add_domino(last_domino_pos + end_height + side_vector);
+
+        //Upright dominoes on the wall at each end
+        Vector3 end_to_side_wall = new Vector3(0, 0, domino_template.HalfHeight - domino_template.HalfThickness);
+        Vector3 end_wall_height = new Vector3(
+            0, domino_template.Width + domino_template.HalfWidth + domino_template.HalfHeight, 0);
+        Vector3 first_end_wall_offset = new Vector3(domino_template.HalfWidth - domino_template.HalfThickness, 0, 0);
+        side_vector = (num_dominoes % 2 == 0) ? end_to_side_wall : -end_to_side_wall;
+        Vector3 last_end_pos = (num_dominoes - 1) * ground_spacing_delta;
+        add_domino(first_end_wall_offset + end_wall_height + end_to_side_wall, end_wall_rotation);
+        add_domino(last_end_pos - first_end_wall_offset + end_wall_height + side_vector, end_wall_rotation);
+
+        //Second layer of horizontal dominoes
+        for (int i = 1; i < num_dominoes - 1; i++) {
+            Vector3 pos = i * ground_spacing_delta + half_layer_delta;
+            add_domino(pos, ground_rotation);
+        }
+
+        //Second layer of walls
+        for (int i = 0; i < num_dominoes - 1; i++) {
+            Vector3 pos = i * wall_spacing_delta + first_wall_offset;
+            pos += i % 2 == 0 ? -center_to_side_delta : center_to_side_delta;
+            add_domino(pos + half_layer_delta, wall_rotation);
         }
 
         //Right wall in first half, left wall in second half
-        for (int i = 0; i < num_dominoes / 2; i++) {
+        /*for (int i = 0; i < num_dominoes / 2; i++) {
             Vector3 pos = i * wall_spacing_delta + first_wall_offset;
             add_domino(pos + center_to_side_delta, wall_rotation);
             add_domino(pos - center_to_side_delta + half_layer_delta, wall_rotation);
-        }
+        }*/
 
         //Right wall in second half, left wall in first half
-        for (int i = 0; i < (num_dominoes - 1) / 2; i++) {
+        /*for (int i = 0; i < (num_dominoes - 1) / 2; i++) {
             Vector3 pos = i * wall_spacing_delta + first_wall_offset2;
             add_domino(pos - center_to_side_delta, wall_rotation);
             add_domino(pos + center_to_side_delta + half_layer_delta, wall_rotation);
-        }
+        }*/
         //Debug.Break();
 	}
 	
