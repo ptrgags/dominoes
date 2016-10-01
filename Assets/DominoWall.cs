@@ -108,6 +108,7 @@ public class DominoWall : DominoStructure {
             pos += i % 2 == 0 ? -center_to_side_delta : center_to_side_delta;
             add_domino(pos + half_layer_delta, wall_rotation);
         }
+        //Debug.Break();
 
         //Right wall in first half, left wall in second half
         /*for (int i = 0; i < num_dominoes / 2; i++) {

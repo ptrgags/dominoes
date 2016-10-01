@@ -85,15 +85,57 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &290703101
+--- !u!1 &208422250
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 290703103}
-  - 114: {fileID: 290703102}
+  - 4: {fileID: 208422252}
+  - 114: {fileID: 208422251}
+  m_Layer: 0
+  m_Name: Domino Wall (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &208422251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208422250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741c7fc766aa1574fbb8e86809beeda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  domino_prefab: {fileID: 114198, guid: de81149914b2a7f4a9e4fa4e8a5dbdcc, type: 2}
+  domino_material: {fileID: 2100000, guid: fce3388ff86b3214392bc51401d20bb9, type: 2}
+  num_dominoes: 100
+--- !u!4 &208422252
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 208422250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.66, y: 0.204, z: -1.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+--- !u!1 &340389244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 340389246}
+  - 114: {fileID: 340389245}
   m_Layer: 0
   m_Name: Domino Wall (1)
   m_TagString: Untagged
@@ -101,28 +143,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &290703102
+--- !u!114 &340389245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 290703101}
+  m_GameObject: {fileID: 340389244}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 741c7fc766aa1574fbb8e86809beeda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  domino_prefab: {fileID: 116652, guid: 4d10c1eb042ee044499913e791eb7747, type: 2}
+  domino_prefab: {fileID: 114198, guid: de81149914b2a7f4a9e4fa4e8a5dbdcc, type: 2}
   domino_material: {fileID: 2100000, guid: aa1e52b83f895394790fb1b7f653394b, type: 2}
-  num_dominoes: 40
---- !u!4 &290703103
+  num_dominoes: 100
+--- !u!4 &340389246
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 290703101}
+  m_GameObject: {fileID: 340389244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 1.125, z: -1.5}
+  m_LocalPosition: {x: 3.66, y: 0.108, z: -1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -201,6 +243,7 @@ GameObject:
   - 23: {fileID: 373657600}
   - 114: {fileID: 373657599}
   - 54: {fileID: 373657604}
+  - 75: {fileID: 373657605}
   m_Layer: 0
   m_Name: Catalyst
   m_TagString: Untagged
@@ -219,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f966a3316aa10a948b3a833fa7aa4689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: {x: 30, y: 0, z: 0}
 --- !u!23 &373657600
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -272,8 +314,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373657598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.4, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: -0.25, y: 0.04, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -284,7 +326,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 373657598}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 0.05
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -292,6 +334,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!75 &373657605
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 373657598}
+  m_Enabled: 1
+  m_Force: {x: 0.5, y: 0, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &893457308
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,8 +500,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920944508}
-  m_LocalRotation: {x: -0.00000004216698, y: 0.9659258, z: -0.25881907, w: -0.0000001573693}
-  m_LocalPosition: {x: 11.08, y: 6, z: 10}
+  m_LocalRotation: {x: -0.089283586, y: 0.9090466, z: -0.31523505, w: -0.25746787}
+  m_LocalPosition: {x: 4, y: 2, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -482,8 +535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
   domino_material: {fileID: 2100000, guid: fce3388ff86b3214392bc51401d20bb9, type: 2}
-  num_dominoes: 10
-  spacing: 0.3
+  num_dominoes: 16
+  spacing: 0.04
 --- !u!4 &969982518
 Transform:
   m_ObjectHideFlags: 0
@@ -491,11 +544,53 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 969982516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.99, y: 0.25, z: -1.5}
+  m_LocalPosition: {x: 3.04, y: 0.024, z: -1.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &1004583219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1004583221}
+  - 114: {fileID: 1004583220}
+  m_Layer: 0
+  m_Name: Domino Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1004583220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1004583219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 741c7fc766aa1574fbb8e86809beeda1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  domino_prefab: {fileID: 114198, guid: de81149914b2a7f4a9e4fa4e8a5dbdcc, type: 2}
+  domino_material: {fileID: 2100000, guid: 77c2c7fc8a305a340b4cd253f7a4860c, type: 2}
+  num_dominoes: 100
+--- !u!4 &1004583221
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1004583219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.66, y: 0.012, z: -1.74}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1077908189
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,8 +620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
   domino_material: {fileID: 2100000, guid: 77c2c7fc8a305a340b4cd253f7a4860c, type: 2}
-  num_dominoes: 16
-  spacing: 0.2
+  num_dominoes: 88
+  spacing: 0.04
 --- !u!4 &1077908191
 Transform:
   m_ObjectHideFlags: 0
@@ -534,53 +629,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1077908189}
   m_LocalRotation: {x: 0, y: 0.25881907, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1 &1687610380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1687610382}
-  - 114: {fileID: 1687610381}
-  m_Layer: 0
-  m_Name: Domino Wall
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1687610381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687610380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741c7fc766aa1574fbb8e86809beeda1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  domino_prefab: {fileID: 116652, guid: 4d10c1eb042ee044499913e791eb7747, type: 2}
-  domino_material: {fileID: 2100000, guid: 77c2c7fc8a305a340b4cd253f7a4860c, type: 2}
-  num_dominoes: 40
---- !u!4 &1687610382
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1687610380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0.125, z: -1.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
 --- !u!1 &1733093036
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +664,7 @@ MonoBehaviour:
   domino_prefab: {fileID: 178878, guid: 09e5f557b45426241a229fbc695e1de9, type: 2}
   domino_material: {fileID: 2100000, guid: aa1e52b83f895394790fb1b7f653394b, type: 2}
   num_dominoes: 100
-  spacing: 0.3
+  spacing: 0.04
 --- !u!4 &1733093038
 Transform:
   m_ObjectHideFlags: 0
@@ -619,7 +672,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1733093036}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 2.9, y: 0.25, z: -1.76}
+  m_LocalPosition: {x: 3.02, y: 0.024, z: -1.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
